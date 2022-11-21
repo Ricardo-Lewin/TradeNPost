@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Col, Container, Form, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import "./Login.css"
 
 function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     return (
         <Container>
             <Row>
@@ -11,12 +14,12 @@ function Login() {
                         <h1>Login to your account</h1>
                         <Form.Group>
                             <Form.Label>Email Address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" value="" required />
+                            <Form.Control type="email" placeholder="Enter email" value={email} required onChange={(e) => setEmail(e.target.value)}/>
                         </Form.Group>
 
-                        <Form.Group >
+                        <Form.Group className="mb-3">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Enter Password" value="" required />
+                            <Form.Control type="password" placeholder="Enter Password" value={password} required onChange={(e) => setPassword(e.target.value)}/>
                         </Form.Group>
 
                         <Form.Group>
@@ -25,7 +28,7 @@ function Login() {
                             </Button>
                         </Form.Group>
 
-                        <p>
+                        <p className="pt-3 text-center">
                             Don't have an account? <Link to="/signup">Create account</Link>{" "}
                         </p>
                     </Form>
