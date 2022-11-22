@@ -1,0 +1,13 @@
+.home-banner {
+    height: 50vh;
+}
+
+img.card-img-top.product-preview-img {
+    border-radius: 10px;
+}
+
+.sale__banner--container img {
+    max-width: 800px;
+    display: block;
+    margin: 0 auto;
+}
