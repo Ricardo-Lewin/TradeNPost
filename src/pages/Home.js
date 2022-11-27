@@ -2,8 +2,8 @@ import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { LinkContainer } from "react-router-bootstrap"
 import { Link } from 'react-router-dom'
-import "./Home.css"
 import categories from '../categories'
+import "./Home.css"
 
 function Home() {
   return (
