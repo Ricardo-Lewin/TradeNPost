@@ -4,6 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import Loading from '../components/Loading'
 import ProductPreview from '../components/ProductPreview';
+import "./CategoryPage.css";
 
 function CategoryPage() {
     const { category } = useParams();
@@ -13,7 +14,8 @@ function CategoryPage() {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`/products/category/${category}`).then(({data}) => {
+        axios.get(`/products/category/${category}`)
+        .then(({ data }) => {
             setLoading(false);
             setProducts(data);
         })
@@ -32,15 +34,15 @@ function CategoryPage() {
     return (
     <div className='category-page-container'>
         <div className={`pt-3 ${category}-banner-container category-banner-container`}>
-            <h1 className='text-center'>{category.charAt[0].toUpperCase() + category.slice[1]}</h1>
+            <h1 className='text-center'>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
         </div>
         <div className='filters-container d-flex justify-content pt-4 pb-4'>
             <input type='search' placeholder='Search' onChange={(e) => setSearchTerm[e.target.value]} />
         </div>
 
         {productsSearch.length === 0
-        ? <h1>No products to show</h1>
-        : <Container>
+        ? (<h1>No products to show</h1>)
+        : (<Container>
             <Row>
                 <Col md={{span: 10, offset: 1}}>
                     {productsSearch.map((product) => {
@@ -49,11 +51,9 @@ function CategoryPage() {
                 </Col>
             </Row>
         </Container>
-    }
-    </div>
-
-    
-  )
+        )}
+    </div>   
+  );
 }
 
-export default CategoryPage
+export default CategoryPage;
