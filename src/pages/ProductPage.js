@@ -5,6 +5,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Loading from "../components/Loading";
+import SimilarProduct from '../components/SimilarProduct';
 
 function ProductPage() {
     const { id } = useParams();
@@ -46,6 +47,18 @@ function ProductPage() {
         <Row>
             <Col lg={6}>
                 <AliceCarousel mouseTracking items={images} controlsStrategy='alternate'/>
+            </Col>
+            <Col lg={6} className="pt-4">
+                    <h1>{product.name}</h1>
+                    <p>
+                        <Badge bg="primary">{product.category}</Badge>
+                    </p>
+                    <p className="product__price">
+                        ${product.price}
+                    </p>
+                    <p style={{ textAlign: "justify" }} className="py-3">
+                        <strong>Description:</strong> {product.description}
+                    </p>
             </Col>
         </Row>
     </Container>
