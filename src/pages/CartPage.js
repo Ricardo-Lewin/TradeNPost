@@ -61,17 +61,17 @@ function CartPage() {
                                         <td>${item.price * user.cart[item._id]}</td>
                                     </tr>
                                     ))}
-                                </tbody>
-                            </Table>
-                            <div>
-                                <h3 className="h4 pt-4">Total: ${user.cart.total}</h3>
-                            </div>
-                        </>
-                    </Col>
-                )}
+                            </tbody>
+                        </Table>
+                        <div>
+                            <h3 className="h4 pt-4">Total: ${user.cart.total}</h3>
+                        </div>
+                    </>
+                </Col>
+            )}
         </Row>
     </Container>
-  )
+  );
 }
 
 export default CartPage
