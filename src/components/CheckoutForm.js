@@ -55,7 +55,13 @@ function CheckoutForm() {
                     <Col md={6}>
                         <Form.Group className="mb-3">
                             <Form.Label>First Name</Form.Label>
-                            <Form.Control type="text" placeholder="First Name" value={user.name} disabled />
+                            <Form.Control type="text" placeholder="First Name" value={user.firstName} disabled />
+                        </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Last Name</Form.Label>
+                            <Form.Control type="text" placeholder="Last Name" value={user.lastName} disabled />
                         </Form.Group>
                     </Col>
                     <Col md={6}>
