@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from '../axios'
 import { Container, Nav, Tab, Col, Row } from "react-bootstrap";
+import DashboardProducts from '../components/DashboardProducts';
 
 function AdminDashboard() {
   return (
@@ -21,8 +22,8 @@ function AdminDashboard() {
                         </Nav>
                     </Col>
                     <Col sm={9}>
-                        <Tab.Content>
-                            Hello
+                        <Tab.Content eventKey="products">
+                            <DashboardProducts />
                         </Tab.Content>
                     </Col>
                 </Row>
