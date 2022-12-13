@@ -29,7 +29,6 @@ function DashboardOrders() {
             delete productCopy.description;
             return productCopy;
         });
-        console.log(productsToShow);
         setShow(true);
         setOrderToShow(productsToShow);
     }
@@ -41,6 +40,7 @@ function DashboardOrders() {
             .then(({ data }) => {
                 setLoading(false);
                 setOrders(data);
+                console.log(data);
             })
             .catch((e) => {
                 setLoading(false);
@@ -62,7 +62,7 @@ function DashboardOrders() {
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Client Name</th>
+                        <th>Client Email</th>
                         <th>Items</th>
                         <th>Order Total</th>
                         <th>Address</th>
@@ -72,9 +72,9 @@ function DashboardOrders() {
                     {orders.map((order) => (
                         <tr>
                             <td>{order._id}</td>
-                            <td>{order.owner?.name}</td>
+                            <td>{order.owner.email}</td>
                             <td>{order.count}</td>
-                            <td>{order.total}</td>
+                            <td>${order.total}</td>
                             <td>{order.address}</td>
                             <td>
                                 {order.status === "processing" 
@@ -83,7 +83,7 @@ function DashboardOrders() {
                                 }
                             </td>
                             <td>
-                                <span style={{cursor: 'pointer'}} onClick={() => showOrder(products)}>
+                                <span style={{cursor: 'pointer'}} onClick={() => showOrder(order.products)}>
                                     View order <i className="fa fa-eye"></i>
                                 </span>
                             </td>
