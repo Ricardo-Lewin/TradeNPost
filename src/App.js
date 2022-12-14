@@ -14,10 +14,16 @@ import CartPage from './pages/CartPage';
 import OrdersPage from "./pages/OrdersPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import EditProductPage from "./pages/EditProductPage";
-
+import { io } from "socket.io-client"
 
 function App() {
   const user = useSelector((state) => state.user);
+  useEffect(() => {
+    const socket = io("ws://localhost:8080");
+    socket.off("notification").on("notification", (msgObj, user_id) => {
+        // logic for notification
+        
+    });
   return (
     <div className="App">
       <BrowserRouter>
