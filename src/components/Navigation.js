@@ -1,34 +1,51 @@
-import React from 'react'
+import React, { useRef, useState } from "react";
+import axios from "../axios";
 import { Navbar, Nav, NavDropdown, Container, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from 'react-router-bootstrap';
-import { logout } from '../features/userSlice';
+import { logout, resetNotifications } from '../features/userSlice';
 import "./Navigation.css";
 
 function Navigation() {
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();
+    const bellRef = useRef(null);
+    const notificationRef = useRef(null);
+    const [bellPos, setBellPos] = useState({});
 
     function handleLogout() {
         dispatch(logout());
     }
-  return (
-    <Navbar bg="light" expand="lg">
-        <Container>
-            <LinkContainer to="/">
-                <Navbar.Brand>TradeNPost</Navbar.Brand>
-            </LinkContainer>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ms-auto">
-                    {/* if no user */}
-                    {!user && (
-                        <LinkContainer to="/login">
-                            <Nav.Link>Login</Nav.Link>
-                        </LinkContainer>
-                    )}
 
-                    {user && !user.isAdmin && (
+    const unreadNotifications = user?.notifications?.reduce((acc, current) => {
+        if (current.status === "unread") return acc + 1;
+        return acc;
+    }, 0);
+
+    function handleToggleNotifications() {
+        const position = bellRef.current.getBoundingClientRect();
+        setBellPos(position);
+        notificationRef.current.style.display = notificationRef.current.style.display === "block" ? "none" : "block";
+        dispatch(resetNotifications());
+        if (unreadNotifications > 0) axios.post(`/users/${user._id}/updateNotifications`);
+    }
+
+    return (
+        <Navbar bg="light" expand="lg">
+            <Container>
+                <LinkContainer to="/">
+                    <Navbar.Brand>TradeNPost</Navbar.Brand>
+                </LinkContainer>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="ms-auto">
+                        {/* if no user */}
+                        {!user && (
+                            <LinkContainer to="/login">
+                                <Nav.Link>Login</Nav.Link>
+                            </LinkContainer>
+                        )}
+                        {user && !user.isAdmin && (
                             <LinkContainer to="/cart">
                                 <Nav.Link>
                                     <i className="fas fa-shopping-cart"></i>
@@ -40,39 +57,61 @@ function Navigation() {
                                 </Nav.Link>
                             </LinkContainer>
                         )}
-                        
-                    {/* if user */}
-                    {user && (
-                    <NavDropdown title={`${user.email}`}  id="basic-nav-dropdown">
-                        {user.isAdmin && (
+
+                        {/* if user */}
+                        {user && (
                             <>
-                                <LinkContainer to="/admin">
-                                    <NavDropdown.Item>Dashboard</NavDropdown.Item>
-                                </LinkContainer>
-                                <LinkContainer to="/new-product">
-                                    <NavDropdown.Item>Create Product</NavDropdown.Item>
-                                </LinkContainer>
+                                <Nav.Link style={{ position: "relative" }} onClick={handleToggleNotifications}>
+                                    <i className="fas fa-bell" ref={bellRef} data-count={unreadNotifications || null}></i>
+                                </Nav.Link>
+                                <NavDropdown title={`${user.email}`} id="basic-nav-dropdown">
+                                    {user.isAdmin && (
+                                        <>
+                                            <LinkContainer to="/admin">
+                                                <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                                            </LinkContainer>
+                                            <LinkContainer to="/new-product">
+                                                <NavDropdown.Item>Create Product</NavDropdown.Item>
+                                            </LinkContainer>
+                                        </>
+                                    )}
+                                    {!user.isAdmin && (
+                                        <>
+                                            <LinkContainer to="/cart">
+                                                <NavDropdown.Item>Cart</NavDropdown.Item>
+                                            </LinkContainer>
+                                            <LinkContainer to="/orders">
+                                                <NavDropdown.Item>My orders</NavDropdown.Item>
+                                            </LinkContainer>
+                                        </>
+                                    )}
+
+                                    <NavDropdown.Divider />
+                                    <Button variant="danger" onClick={handleLogout} className="logout-btn">
+                                        Logout
+                                    </Button>
+                                </NavDropdown>
                             </>
                         )}
-                         {!user.isAdmin && (
-                            <>
-                                <LinkContainer to="/cart">
-                                    <NavDropdown.Item>Cart</NavDropdown.Item>
-                                </LinkContainer>
-                                <LinkContainer to="/orders">
-                                    <NavDropdown.Item>My Orders</NavDropdown.Item>
-                                </LinkContainer>
-                            </>
-                        )}
-                        <NavDropdown.Divider />
-                        <Button variant='danger' onClick={handleLogout} className="logout-btn">Logout</Button>
-                    </NavDropdown>
-                    )}
-                </Nav>
-            </Navbar.Collapse>
-        </Container>
-    </Navbar>
-  )
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+            {/* notifications */}
+            <div className="notifications-container" ref={notificationRef} style={{ position: "absolute", top: bellPos.top + 30, left: bellPos.left, display: "none" }}>
+                {user?.notifications.length > 0 ? (
+                    user?.notifications.map((notification) => (
+                        <p className={`notification-${notification.status}`}>
+                            {notification.message}
+                            <br />
+                            <span>{notification.time.split("T")[0] + " " + notification.time.split("T")[1]}</span>
+                        </p>
+                    ))
+                ) : (
+                    <p>No notifcations yet</p>
+                )}
+            </div>
+        </Navbar>
+    );
 }
 
 export default Navigation
