@@ -1,12 +1,13 @@
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import NewProduct from './pages/NewProduct';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ProductPage from './pages/ProductPage';
 import CategoryPage from './pages/CategoryPage';
 import ScrollToTop from './components/ScrollToTop';
@@ -20,7 +21,7 @@ import { addNotification } from "./features/userSlice";
 function App() {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     const socket = io("ws://localhost:8080");
 
