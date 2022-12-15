@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Alert, Col, Container, Form, Row, Button } from "react-bootstrap";
-import { useNavigate } from 'react-router-dom';
-import { useCreateProductMutation } from '../services/appApi';
+import { useNavigate } from "react-router-dom";
+import { useCreateProductMutation } from "../services/appApi";
 import axios from "../axios"
 import "./NewProduct.css"
 
@@ -85,9 +85,11 @@ function NewProduct() {
                                     -- Select One --
                                 </option>
                                 <option value="technology">technology</option>
-                                <option value="tablets">tablets</option>
-                                <option value="phones">phones</option>
                                 <option value="laptops">laptops</option>
+                                <option value="phones">phones</option>
+                                <option value="clothes">clothes</option>
+                                <option value="shoes">shoes</option>
+                                <option value="accessories">accessories</option>
                             </Form.Select>
                         </Form.Group>
 

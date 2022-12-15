@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { Button, Col, Container, Form, Row, Alert } from "react-bootstrap"
-import { Link } from "react-router-dom"
-import "./Login.css"
-import { useLoginMutation } from "../services/appApi"
+import React, { useState } from "react";
+import { Button, Col, Container, Form, Row, Alert } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "./Login.css";
+import { useLoginMutation } from "../services/appApi";
 
 function Login() {
     const [email, setEmail] = useState('');
