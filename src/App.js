@@ -1,22 +1,23 @@
-import './App.css';
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Navigation from './components/Navigation';
-import Home from './pages/Home';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import NewProduct from './pages/NewProduct';
-import { useDispatch, useSelector } from 'react-redux'
-import ProductPage from './pages/ProductPage';
-import CategoryPage from './pages/CategoryPage';
-import ScrollToTop from './components/ScrollToTop';
-import CartPage from './pages/CartPage';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navigation from "./components/Navigation";
+import Home from "./pages/Home";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import NewProduct from "./pages/NewProduct";
+import { useDispatch, useSelector } from "react-redux";
+import ProductPage from "./pages/ProductPage";
+import CategoryPage from "./pages/CategoryPage";
+import ScrollToTop from "./components/ScrollToTop";
+import CartPage from "./pages/CartPage";
 import OrdersPage from "./pages/OrdersPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import EditProductPage from "./pages/EditProductPage";
 import { io } from "socket.io-client";
 import { addNotification } from "./features/userSlice";
+
 
 function App() {
   const user = useSelector((state) => state.user);
