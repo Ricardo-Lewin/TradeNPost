@@ -27,7 +27,7 @@ function CartPage() {
   return (
     <Container style = {{minHeight: '95vh'}} className='cart-container'>
         <Row>
-            <Col md={7}>
+            <Col>
                 <h1 className='pt-2 h3'>Shopping Cart</h1>
                 {cart.length === 0
                     ? (<Alert variant='info'>Shopping Cart is empty. Add items to view in cart.</Alert>)
