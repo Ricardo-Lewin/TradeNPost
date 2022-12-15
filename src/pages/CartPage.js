@@ -56,7 +56,7 @@ function CartPage() {
                                         <td>&nbsp;</td>
                                         <td>
                                             {!isLoading && <i className="fa fa-times" style={{ marginRight: 10, cursor:"pointer" }} onClick={() => removeFromCart({ productId: item._id, price: item.price, userId: user._id })}></i>}
-                                            <img src={item.pictures[0].url} style={{ width: 100, height: 100, objectFit:"cover" }} />
+                                            <img src={item.pictures[0].url} style={{ width: 100, height: 100, objectFit:"cover" }} alt=""/>
                                          </td>
                                          <td>${item.price}</td>
                                          <td>

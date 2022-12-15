@@ -16,11 +16,11 @@ function Home() {
     const lastProducts = products.slice(0,8);
     useEffect(() => {
         axios.get("/products").then(({ data }) => dispatch(updateProducts(data)));
-    }, []);
+    }, [dispatch]);
 
   return (
     <div>
-        <img src="https://res.cloudinary.com/dlygntleh/image/upload/v1671070262/samples/ecommerce/vecteezy_online-shopping-on-phone-buy-sell-business-digital-web_4299835_akbx81.jpg" className="home-banner" />
+        <img src="https://res.cloudinary.com/dlygntleh/image/upload/v1671070262/samples/ecommerce/vecteezy_online-shopping-on-phone-buy-sell-business-digital-web_4299835_akbx81.jpg" className="home-banner" alt="banner header"/>
         <div className="featured-products-container container mt-4">
             <h2>Latest Products</h2>
             {/* lat products here */}

@@ -31,7 +31,7 @@ function DashboardProducts() {
                 {products.map(product => 
                     <tr>
                         <td>
-                            <img src={product.pictures[0].url} className="dashboard-product-preview"/>
+                            <img src={product.pictures[0].url} className="dashboard-product-preview" alt={product.name}/>
                         </td>
                         <td>{product._id}</td>
                         <td>{product.name}</td>

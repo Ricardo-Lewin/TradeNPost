@@ -37,7 +37,7 @@ function ProductPage() {
         1024: { items: 3 },
     };
 
-    const images = product.pictures.map((picture) => <img className='product__carousel--image' src={picture.url} onDragStart={handleDragStart}/>)
+    const images = product.pictures.map((picture) => <img className='product__carousel--image' src={picture.url} onDragStart={handleDragStart} alt=""/>)
 
     let similarProducts = [];
     if (similar) {

@@ -98,7 +98,7 @@ function DashboardOrders() {
                 </Modal.Header>
                 {orderToShow.map((order) => (
                     <div className="order-details__container d-flex justify-content-around py-2">
-                        <img src={order.pictures[0].url} style={{ maxWidth: 100, height: 100, objectFit: "cover" }} />
+                        <img src={order.pictures[0].url} style={{ maxWidth: 100, height: 100, objectFit: "cover" }} alt=""/>
                         <p>
                             <span>{order.count} x </span> {order.name}
                         </p>

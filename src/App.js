@@ -38,7 +38,7 @@ function App() {
           dispatch(addNotification(msgObj));
         }
     });
-  }, []);
+  }, [dispatch, user._id, user.isAdmin]);
 
   return (
     <div className="App">
