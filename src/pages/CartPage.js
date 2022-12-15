@@ -1,13 +1,13 @@
-import React from 'react';
-import { Alert, Col, Container, Row, Table } from 'react-bootstrap';
-import { useSelector } from 'react-redux'
+import React from "react";
+import { Alert, Col, Container, Row, Table } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { useIncreaseCartProductMutation, useDecreaseCartProductMutation, useRemoveFromCartMutation } from "../services/appApi";
-import { Elements } from '@stripe/react-stripe-js'
-import {loadStripe} from '@stripe/stripe-js';
-import './CartPage.css';
-import CheckoutForm from '../components/CheckoutForm';
+import { Elements } from "@stripe/react-stripe-js";
+import {loadStripe} from "@stripe/stripe-js";
+import "./CartPage.css";
+import CheckoutForm from "../components/CheckoutForm";
 
-const stripePromise = loadStripe('pk_test_51MD9i0IZLpPauFCaFJ1mGPnYztlOTS8jFUmcSFAiHSwiEzQfPqiOpI911XVHDqKd4Sa9bOa2NI15afOZiaxlhFGH00poqDIgon')
+const stripePromise = loadStripe('pk_test_51MD9i0IZLpPauFCaFJ1mGPnYztlOTS8jFUmcSFAiHSwiEzQfPqiOpI911XVHDqKd4Sa9bOa2NI15afOZiaxlhFGH00poqDIgon');
 
 function CartPage() {
     const user = useSelector(state => state.user);

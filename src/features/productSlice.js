@@ -1,7 +1,5 @@
-import {createSlice} from '@reduxjs/toolkit'
-
-// appApi
-import appApi from '../services/appApi'
+import { createSlice } from "@reduxjs/toolkit";
+import appApi from "../services/appApi";
 
 const initialState = [];
 

@@ -31,7 +31,7 @@ function Navigation() {
     }
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar className="navbar" expand="lg">
             <Container>
                 <LinkContainer to="/">
                     <Navbar.Brand>TradeNPost</Navbar.Brand>
@@ -39,6 +39,7 @@ function Navigation() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
+
                         {/* if no user */}
                         {!user && (
                             <LinkContainer to="/login">
@@ -96,6 +97,7 @@ function Navigation() {
                     </Nav>
                 </Navbar.Collapse>
             </Container>
+
             {/* notifications */}
             <div className="notifications-container" ref={notificationRef} style={{ position: "absolute", top: bellPos.top + 30, left: bellPos.left, display: "none" }}>
                 {user?.notifications.length > 0 ? (
@@ -107,11 +109,11 @@ function Navigation() {
                         </p>
                     ))
                 ) : (
-                    <p>No notifcations yet</p>
+                    <p>No notifications yet</p>
                 )}
             </div>
         </Navbar>
     );
 }
 
-export default Navigation
+export default Navigation;

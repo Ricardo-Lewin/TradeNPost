@@ -10,7 +10,7 @@ function DashboardProducts() {
     const user = useSelector((state) => state.user);
     // removing the product
     
-    const [deleteProduct, { isLoading, isSuccess }] = useDeleteProductMutation();
+    const [deleteProduct, { isLoading }] = useDeleteProductMutation();
 
     function handleDeleteProduct(id) {
         // logic here

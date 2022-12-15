@@ -1,7 +1,6 @@
-import React from 'react'
-import axios from '../axios'
+import React from "react"
 import { Container, Nav, Tab, Col, Row } from "react-bootstrap";
-import DashboardProducts from '../components/DashboardProducts';
+import DashboardProducts from "../components/DashboardProducts";
 import DashboardOrders from "../components/DashboardOrders";
 import DashboardClients from "../components/DashboardClients";
 
@@ -43,4 +42,4 @@ function AdminDashboard() {
     );
 }
 
-export default AdminDashboard
+export default AdminDashboard;

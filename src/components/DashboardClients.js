@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import axios from "../axios";
 import Loading from "./Loading";
+
 function ClientsAdminPage() {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -21,7 +22,7 @@ function ClientsAdminPage() {
     }, []);
 
     if (loading) return <Loading />;
-    if (users?.length == 0) return <h2 className="py-2 text-center">No users yet</h2>;
+    if (users?.length === 0) return <h2 className="py-2 text-center">No users yet</h2>;
 
     return (
         <Table responsive striped bordered hover>
@@ -45,8 +46,6 @@ function ClientsAdminPage() {
             </tbody>
         </Table>
     );
-
-    return <div>Clients</div>;
 }
 
 export default ClientsAdminPage;

@@ -9,4 +9,4 @@ function ScrollToTop() {
   return;
 }
 
-export default ScrollToTop
+export default ScrollToTop;
