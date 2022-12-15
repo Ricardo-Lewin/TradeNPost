@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { v4 as uuid } from 'uuid';
 import axios from "../axios";
 import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -16,7 +17,6 @@ function CategoryPage() {
         setLoading(true);
         axios.get(`/products/category/${category}`)
         .then(({ data }) => {
-            console.log(data);
             setLoading(false);
             setProducts(data);
         })
@@ -49,7 +49,7 @@ function CategoryPage() {
                         <Col md={{span: 10, offset: 1}}>
                             <div className='d-flex justify-content-center align-items-center flex-wrap'>
                                 {productsSearch.map((product) => (
-                                <ProductPreview {...product}/>
+                                <ProductPreview key={uuid()} {...product}/>
                             ))}
                             </div>
                         </Col>
