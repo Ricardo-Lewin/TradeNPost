@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Button, Col, Container, Form, Row, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Signup.css";
@@ -58,4 +58,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default Signup;

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import axios from "../axios";
-import AliceCarousel from 'react-alice-carousel' //https://www.npmjs.com/package/react-alice-carousel
+import AliceCarousel from "react-alice-carousel" //https://www.npmjs.com/package/react-alice-carousel
 import "react-alice-carousel/lib/alice-carousel.css";
-import { Col, Container, Row, Badge, Button, ButtonGroup, Form } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Col, Container, Row, Badge, Button, ButtonGroup, Form } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import Loading from "../components/Loading";
-import SimilarProduct from '../components/SimilarProduct';
+import SimilarProduct from "../components/SimilarProduct";
 import "./ProductPage.css";
-import { useAddToCartMutation } from '../services/appApi';
+import { useAddToCartMutation } from "../services/appApi";
 import ToastMessage from "../components/ToastMessage";
 
 function ProductPage() {
@@ -69,10 +69,6 @@ function ProductPage() {
                     <ButtonGroup style={{ width: "90%" }}>
                         <Form.Select size="lg" style={{ width: "40%", borderRadius: "0" }}>
                             <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
                         </Form.Select>
                         <Button size="sm" 
                         onClick={() => addToCart({ userId: user._id, productId: id, price: product.price, image: product.pictures[0].url })}>
